@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function MediaImg(props) {
+export default function ImageCard(props) {
   return (
   <div className="photo-card">
     <img src={props.url} alt={props.title}></img>

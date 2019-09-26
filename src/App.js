@@ -4,8 +4,9 @@ import moment from "moment";
 import axios from "axios";
 
 import Header from "./components/Header.js";
-import MediaImg from "./components/MediaImg.js";
-import MediaVideo from "./components/MediaVideo.js";
+import ImageCard from "./components/ImageCard.js";
+import VideoCard from "./components/VideoCard.js";
+import { AppContainer } from './Styles.js';
 
 function App() { 
   const [data, setData] = useState("test data");
@@ -25,7 +26,7 @@ function App() {
       try {
         //const photoData = await axios.get("https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY");
         const photoData = await axios.get(`https://api.nasa.gov/planetary/apod?api_key=${apiKey}&date=${date}`);
-        setData(photoData.data);  
+        setData(photoData.data); 
         //console.log(data); 
       } catch (error) {
         console.log(error);
@@ -36,20 +37,21 @@ function App() {
   }, [date]);
 
     return (
-    <div className="App">
+    <AppContainer>
       <Header date={date} handleDateChange={handleDateChange} />
+      {/* determine media type and display correct type */}
       {data.media_type === "image" ? 
-        <MediaImg 
+        <ImageCard 
           title={data.title} 
           url={data.url} 
           explanation={data.explanation}
         /> : 
-        <MediaVideo 
+        <VideoCard 
           title={data.title} 
           url={data.url} 
           explanation={data.explanation}
         />}
-    </div>
+    </AppContainer>
   )
 }
 
