@@ -1,13 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect }  from "react";
 import "./App.css";
-import axios from "axios";
-import PhotoCard from "./components/PhotoCard.js";  
 import moment from "moment";
+import axios from "axios";
 
-function App() {
+import Header from "./components/Header.js";
+import MediaImg from "./components/MediaImg.js";
+import MediaVideo from "./components/MediaVideo.js";
+
+function App() { 
   const [data, setData] = useState("test data");
   const [date, setDate] = useState(moment().format('YYYY-MM-DD'));
   const [counter, setCounter] = useState(1);
+  const apiKey= "DaHDhBGUKq3Eenp4GTC9kKka3MCfNCEDiu55Nm66";
 
   function handleDateChange () {
     setDate(moment().subtract(counter, "days").format('YYYY-MM-DD'));
@@ -20,7 +24,7 @@ function App() {
     async function fetchData() {
       try {
         //const photoData = await axios.get("https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY");
-        const photoData = await axios.get(`https://api.nasa.gov/planetary/apod?api_key=DaHDhBGUKq3Eenp4GTC9kKka3MCfNCEDiu55Nm66&date=${date}`);
+        const photoData = await axios.get(`https://api.nasa.gov/planetary/apod?api_key=${apiKey}&date=${date}`);
         setData(photoData.data);  
         //console.log(data); 
       } catch (error) {
@@ -30,18 +34,23 @@ function App() {
 
     fetchData()
   }, [date]);
-  
-  return (
+
+    return (
     <div className="App">
-      <PhotoCard 
-        title={data.title} 
-        url={data.url} 
-        explanation={data.explanation} 
-        date={date} 
-        handleDateChange={handleDateChange}
-        />
+      <Header date={date} handleDateChange={handleDateChange} />
+      {data.media_type === "image" ? 
+        <MediaImg 
+          title={data.title} 
+          url={data.url} 
+          explanation={data.explanation}
+        /> : 
+        <MediaVideo 
+          title={data.title} 
+          url={data.url} 
+          explanation={data.explanation}
+        />}
     </div>
-  );
+  )
 }
 
 export default App;
