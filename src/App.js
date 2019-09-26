@@ -8,6 +8,7 @@ import ImageCard from "./components/ImageCard.js";
 import VideoCard from "./components/VideoCard.js";
 import { AppContainer } from './Styles.js';
 
+
 function App() { 
   const [data, setData] = useState("test data");
   const [date, setDate] = useState(moment().format('YYYY-MM-DD'));
