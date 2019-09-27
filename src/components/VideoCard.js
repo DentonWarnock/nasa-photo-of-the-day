@@ -1,8 +1,6 @@
 import React from "react";
 import { StyledIFrame, StyledCard } from '../Styles.js';
 
-
-
 export default function VideoCard(props) {
   return (
   <StyledCard>

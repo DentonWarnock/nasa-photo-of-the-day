@@ -1,5 +1,4 @@
 import React, { useState, useEffect }  from "react";
-import "./App.css";
 import moment from "moment";
 import axios from "axios";
 
@@ -19,7 +18,6 @@ function App() {
     setDate(moment().subtract(counter, "days").format('YYYY-MM-DD'));
     setCounter(counter + 1);
   }
-
   console.log(date);
 
   useEffect(() => {
@@ -39,8 +37,8 @@ function App() {
 
     return (
     <AppContainer>
-      <Header date={date} handleDateChange={handleDateChange} />
-      {/* determine media type and display correct type */}
+      <Header date={date} handleDateChange={handleDateChange} title={data.title} />
+      {/* determine media type and display correct type - image or iframe video */}
       {data.media_type === "image" ? 
         <ImageCard 
           title={data.title} 

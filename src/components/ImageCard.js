@@ -6,7 +6,7 @@ export default function ImageCard(props) {
   <StyledCard>
     <img src={props.url} alt={props.title}></img>
     <h1>{props.title}</h1>
-    <p>{props.explanation}</p>      
+    <p>{props.explanation}</p>
   </StyledCard>
   )
 }

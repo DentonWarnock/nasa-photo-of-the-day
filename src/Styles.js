@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const AppContainer = styled.div`
   max-width: 100%;
-  width: 85%;
+  width: 95%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -11,7 +11,7 @@ export const AppContainer = styled.div`
   margin: 0 auto;
 `
 export const StyledHeader = styled.div`
-  width: 85%;
+  width: 100%;
   height: 10%;
   display: flex;
   flex-direction: column;
@@ -20,22 +20,21 @@ export const StyledHeader = styled.div`
   
   h5 {
     color: white;
-    font-size: 1rem;
+    font-size: 1.15rem;
   }
   span {
     color: dodgerblue;
   }
 `
-
 export const StyledCard = styled.div`
   width: 85%;
   height: 10%;
   color: white;
-  margin-top: 1rem;
-  margin: 1rem auto;
+  margin: 1.5rem auto;
 
   img {
-    max-width: 100%;
+    width: 85%;
+    border-radius: 10px;
   }
   h1 {
     color: dodgerblue;
@@ -55,18 +54,19 @@ export const StyledButton = styled.button`
   border: none;
   border-radius: 8px;
   height: 2.5rem;
-  margin: 0 auto;  
-
+  margin: 0 auto;
   &:hover {
-    background: white;
+    background: whitesmoke;
     color: dodgerblue;
     cursor: pointer;
     border: 2px solid dodgerblue;
     border-radius: 10px;
   }
 `
-
 export const StyledIFrame = styled.iframe`
-  width: 800px;
-  height: 600px;
+  width: 60%;
+  max-height: 40rem;
+  height: 35rem;
+  border: none;
+  border-radius: 1rem;
   `
